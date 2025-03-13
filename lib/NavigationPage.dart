@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_profile/BusinessPage.dart';
 import 'package:my_profile/HomePage.dart';
 import 'package:my_profile/ProfilePage.dart';
+import 'package:my_profile/SchoolPage.dart';
 import 'package:my_profile/VideoPage.dart';
 
 ///Stateful Widget VS Stateless Widget
@@ -26,7 +27,7 @@ class _NavigationPageState extends State<NavigationPage> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     VideoPage(),
-    Text("Index 2: School"),
+    SchoolPage(),
     ProfilePage()
   ];
 
@@ -49,6 +50,9 @@ class _NavigationPageState extends State<NavigationPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("MaPI Social"),
+        actions: [
+          Icon(Icons.access_alarm_outlined)
+        ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
