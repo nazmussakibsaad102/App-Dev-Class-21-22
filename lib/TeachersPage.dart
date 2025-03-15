@@ -3,8 +3,11 @@ import 'package:flutter/rendering.dart';
 
 class TeachersPage extends StatelessWidget {
 
+  ///List = [.....]
+  ///Map = {"key" : "value"]
+  ///list(map(string,string))
   //Map
-  List students = [
+   List<Map<String,String>> students = [
     {"name" : "Al Amin" , "best_friend" : "Ashraful", "Semester" : "7"},
     {"name" : "Alif Abdullah" , "best_friend" : "Arafat", "Semester" : "7"},
     {"name" : "Asraful Islam" , "best_friend" : "Mehedi", "Semester" : "7"},
@@ -29,9 +32,14 @@ class TeachersPage extends StatelessWidget {
             Container(
               height: 500,
               child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: students.length,
                   itemBuilder: (context, index){
-                    return StudentCard();
+                    final student = students[index];
+                    return StudentCard(
+                      name: student["name"]!,// "AL Amin"
+                      bestFriend: student["best_friend"]!,
+                      semester: student["Semester"]!,
+                    );
                   }
               ),
             )
@@ -43,7 +51,16 @@ class TeachersPage extends StatelessWidget {
 }
 
 class StudentCard extends StatelessWidget {
-  const StudentCard({super.key});
+
+  String name;
+  String bestFriend;
+  String semester;
+
+  StudentCard({
+    required this.name,
+    required this.bestFriend,
+    required this.semester
+});
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +74,17 @@ class StudentCard extends StatelessWidget {
             children: [
               Image.asset("assets/images/dollar.PNG"),
               SizedBox(width: 20,),
-              Text("Name"),
+              Text("$name"),
               SizedBox(width: 20,),
-              Text("best_friend"),
+              Text("$bestFriend"),
               SizedBox(width: 20,),
-              Text("semester"),
+              Text("$semester"),
             ],
           ),
         ),
       ),
     );
   }
+
+
 }
