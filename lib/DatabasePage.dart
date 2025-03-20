@@ -8,6 +8,14 @@ class Databasepage extends StatefulWidget {
 }
 
 class _DatabasepageState extends State<Databasepage> {
+
+  List<Map<String,String>> _students = [
+    {"student" : "Ashraful"},
+    {"student" : "Al Amin"},
+    {"student" : "Alif"},
+    {"student" : "Arafat"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -24,9 +32,9 @@ class _DatabasepageState extends State<Databasepage> {
             Container(
               height: 500,
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: _students.length,
                   itemBuilder: (context, index){
-                    return Text("Student Name");
+                    return Text("Student Name : ${_students[index]["student"]}");
                   }
               ),
             )
